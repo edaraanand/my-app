@@ -1,12 +1,9 @@
 node{
-   agent none
    stage('SCM Checkout'){
      git 'https://github.com/edaraanand/my-app'
    }
 
-   // Comment added
    stage('SonarQube Analysis') {
-        agent any
         withSonarQubeEnv('sonar') { 
           sh 'mvn clean package sonar:sonar'
         }
